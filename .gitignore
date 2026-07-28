@@ -1,0 +1,8 @@
+node_modules
+.DS_Store
+
+# intellij files
+.idea
+
+# env variables
+.env
