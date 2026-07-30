@@ -6,13 +6,48 @@
     "markdown-it",
     "markdown-it-plugin",
     "vue",
-    "sfc"
+    "sfc",
+    "vitepress",
+    "snippet"
   ],
   "license": "MIT",
   "author": "Okamidev",
   "type": "module",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "test": "vitest"
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc -p tsconfig.test.json",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "prepublishOnly": "npm run clean && npm run typecheck && npm run test:run && npm run build"
+  },
+  "peerDependencies": {
+    "markdown-it": "^13.0.0 || ^14.0.0",
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^26.1.2",
+    "markdown-it": "^14.1.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.10",
+    "vue": "^3.5.40"
   }
 }
