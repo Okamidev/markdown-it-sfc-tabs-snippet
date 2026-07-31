@@ -12,6 +12,10 @@
     "noFallthroughCasesInSwitch": true,
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
+    // Lets relative imports carry the real `.ts` extension, so Node can run `src` directly while
+    // `tsc` still rewrites them to `.js` on emit.
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
 

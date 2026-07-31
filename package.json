@@ -34,6 +34,7 @@
     "dev": "tsc -p tsconfig.json --watch",
     "clean": "rm -rf dist",
     "typecheck": "tsc -p tsconfig.test.json",
+    "playground": "node playground/render.ts",
     "test": "vitest",
     "test:run": "vitest run",
     "prepublishOnly": "npm run clean && npm run typecheck && npm run test:run && npm run build"
