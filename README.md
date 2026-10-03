@@ -1,5 +1,9 @@
 # markdown-it-sfc-tabs-snippet
 
+[![npm version](https://img.shields.io/npm/v/markdown-it-sfc-tabs-snippet)](https://www.npmjs.com/package/markdown-it-sfc-tabs-snippet)
+[![CI](https://github.com/Okamidev/markdown-it-sfc-tabs-snippet/actions/workflows/ci.yml/badge.svg)](https://github.com/Okamidev/markdown-it-sfc-tabs-snippet/actions/workflows/ci.yml)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
+
 A [markdown-it](https://github.com/markdown-it/markdown-it) plugin that imports a Vue Single File
 Component into your markdown as a group of code blocks — one per block the SFC declares. In
 [VitePress](https://vitepress.dev), those render as tabs.
@@ -163,19 +167,12 @@ rule otherwise.
 Node 20 or newer. The plugin only reads files at render time — nothing is written, and the SFC is
 never compiled, only parsed.
 
-## Development
+## Contributing
 
-```sh
-npm install
-npm run playground   # render the demo page in playground/ and print tokens + HTML
-npm test             # vitest, watch mode
-npm run test:run     # vitest, single run
-npm run typecheck    # tsc over src and test
-npm run build        # emit dist/ with declarations
-```
-
-`npm run playground` needs a Node version that runs TypeScript directly (22.18+ or 24+); everything
-else works on any supported Node.
+Issues and pull requests are welcome. [CONTRIBUTING.md](./CONTRIBUTING.md) covers the development
+setup, the available scripts and the commit conventions. Please follow the
+[Code of Conduct](./CODE_OF_CONDUCT.md), and report security problems privately as described in
+[SECURITY.md](./SECURITY.md).
 
 ## License
 

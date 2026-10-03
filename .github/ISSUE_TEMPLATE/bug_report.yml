@@ -1,0 +1,62 @@
+name: Bug report
+description: Something renders wrong, throws, or doesn't match the README.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Security problems should not be reported here — see SECURITY.md.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: What you expected, and what you got instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sfc
+    attributes:
+      label: The imported `.vue` file
+      description: A minimal component that reproduces the problem.
+      render: vue
+    validations:
+      required: true
+
+  - type: textarea
+    id: markdown
+    attributes:
+      label: The markdown
+      description: The `<<<vue` line, and the page path if it matters.
+      render: md
+    validations:
+      required: true
+
+  - type: textarea
+    id: output
+    attributes:
+      label: Output or error
+      description: The rendered HTML, or the full error message and stack trace.
+      render: text
+
+  - type: input
+    id: plugin-version
+    attributes:
+      label: markdown-it-sfc-tabs-snippet version
+      placeholder: 0.1.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Versions of Node, `vue`, `markdown-it`, and VitePress if you use it.
+      placeholder: |
+        Node: 22.18.0
+        vue: 3.5.40
+        markdown-it: 14.1.0
+        VitePress: 1.6.4
+    validations:
+      required: true
