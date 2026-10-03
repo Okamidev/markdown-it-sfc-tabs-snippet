@@ -44,10 +44,12 @@
     "dev": "tsc -p tsconfig.json --watch",
     "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\"",
     "typecheck": "tsc -p tsconfig.test.json",
+    "lint": "oxlint --deny-warnings",
+    "lint:fix": "oxlint --fix",
     "playground": "node playground/render.ts",
     "test": "vitest",
     "test:run": "vitest run",
-    "prepublishOnly": "npm run clean && npm run typecheck && npm run test:run && npm run build"
+    "prepublishOnly": "npm run clean && npm run lint && npm run typecheck && npm run test:run && npm run build"
   },
   "peerDependencies": {
     "markdown-it": "^13.0.0 || ^14.0.0",
@@ -57,6 +59,7 @@
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^20.19.43",
     "markdown-it": "^14.1.0",
+    "oxlint": "^1.86.0",
     "typescript": "^5.9.3",
     "vitest": "^4.1.10",
     "vue": "^3.5.40"

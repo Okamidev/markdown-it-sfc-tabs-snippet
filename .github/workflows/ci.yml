@@ -37,8 +37,10 @@ jobs:
         if: matrix.peers == 'minimum'
         run: npm install --no-save markdown-it@13.0.0 vue@3.3.0
 
-      # Typecheck and build depend on the dev toolchain, not on what users install, so they only
-      # run against the locked versions.
+      - name: Lint
+        if: matrix.peers == 'locked'
+        run: npm run lint
+
       - name: Typecheck
         if: matrix.peers == 'locked'
         run: npm run typecheck
