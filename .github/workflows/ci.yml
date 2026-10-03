@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Node ${{ matrix.node }} (${{ matrix.peers }} peers)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22', '24']
+        peers: [locked]
+        include:
+          # Lowest versions the `peerDependencies` ranges allow, on the lowest supported Node.
+          - node: '20'
+            peers: minimum
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - run: npm ci
+
+      - name: Install minimum peer versions
+        if: matrix.peers == 'minimum'
+        run: npm install --no-save markdown-it@13.0.0 vue@3.3.0
+
+      - name: Format
+        if: matrix.peers == 'locked'
+        run: npm run format:check
+
+      - name: Lint
+        if: matrix.peers == 'locked'
+        run: npm run lint
+
+      - name: Typecheck
+        if: matrix.peers == 'locked'
+        run: npm run typecheck
+
+      - name: Test
+        run: npm run test:run
+
+      - name: Build
+        if: matrix.peers == 'locked'
+        run: npm run build

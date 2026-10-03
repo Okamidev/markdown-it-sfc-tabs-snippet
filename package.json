@@ -1,0 +1,70 @@
+{
+  "name": "markdown-it-sfc-tabs-snippet",
+  "version": "0.1.0",
+  "description": "Markdown-it plugin to display Vue Single File Component as tabs snippets in markdown",
+  "keywords": [
+    "markdown-it",
+    "markdown-it-plugin",
+    "vue",
+    "sfc",
+    "vitepress",
+    "snippet"
+  ],
+  "homepage": "https://github.com/Okamidev/markdown-it-sfc-tabs-snippet#readme",
+  "bugs": {
+    "url": "https://github.com/Okamidev/markdown-it-sfc-tabs-snippet/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Okamidev/markdown-it-sfc-tabs-snippet.git"
+  },
+  "license": "MIT",
+  "author": "Sylvain Bonnard (https://github.com/Okamidev)",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\"",
+    "typecheck": "tsc -p tsconfig.test.json",
+    "lint": "oxlint --deny-warnings",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "playground": "node playground/render.ts",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "prepublishOnly": "npm run clean && npm run format:check && npm run lint &&npm run typecheck && npm run test:run && npm run build"
+  },
+  "peerDependencies": {
+    "markdown-it": "^13.0.0 || ^14.0.0",
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^20.19.43",
+    "markdown-it": "^14.1.0",
+    "oxfmt": "^0.71.0",
+    "oxlint": "^1.86.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.10",
+    "vue": "^3.5.40"
+  }
+}
