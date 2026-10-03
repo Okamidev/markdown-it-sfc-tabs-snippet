@@ -12,12 +12,17 @@ concurrency:
 
 jobs:
   test:
-    name: Node ${{ matrix.node }}
+    name: Node ${{ matrix.node }} (${{ matrix.peers }} peers)
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         node: ['20', '22', '24']
+        peers: [locked]
+        include:
+          # Lowest versions the `peerDependencies` ranges allow, on the lowest supported Node.
+          - node: '20'
+            peers: minimum
     steps:
       - uses: actions/checkout@v4
 
@@ -28,11 +33,19 @@ jobs:
 
       - run: npm ci
 
+      - name: Install minimum peer versions
+        if: matrix.peers == 'minimum'
+        run: npm install --no-save markdown-it@13.0.0 vue@3.3.0
+
+      # Typecheck and build depend on the dev toolchain, not on what users install, so they only
+      # run against the locked versions.
       - name: Typecheck
+        if: matrix.peers == 'locked'
         run: npm run typecheck
 
       - name: Test
         run: npm run test:run
 
       - name: Build
+        if: matrix.peers == 'locked'
         run: npm run build
