@@ -1,7 +1,5 @@
 <template>
-    <button type="button" @click="increment">
-        Count is {{ count }}
-    </button>
+    <button type="button" @click="increment">Count is {{ count }}</button>
 </template>
 
 <script setup lang="ts">

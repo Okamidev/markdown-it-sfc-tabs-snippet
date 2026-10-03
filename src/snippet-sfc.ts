@@ -92,7 +92,11 @@ const sfcBlocks = (source: string): SnippetBlock[] => {
     }
 
     if (descriptor.script) {
-        blocks.push({ title: 'script', lang: descriptor.script.lang ?? 'js', content: descriptor.script.content });
+        blocks.push({
+            title: 'script',
+            lang: descriptor.script.lang ?? 'js',
+            content: descriptor.script.content,
+        });
     }
 
     descriptor.styles.forEach((style) => {
@@ -107,7 +111,10 @@ const sfcBlocks = (source: string): SnippetBlock[] => {
         blocks.push({ title: block.type, lang: block.lang ?? 'txt', content: block.content });
     });
 
-    return blocks.map((block) => ({ ...block, content: dedent(block.content.replace(/^\n+|\n+$/g, '')) }));
+    return blocks.map((block) => ({
+        ...block,
+        content: dedent(block.content.replace(/^\n+|\n+$/g, '')),
+    }));
 };
 
 /**

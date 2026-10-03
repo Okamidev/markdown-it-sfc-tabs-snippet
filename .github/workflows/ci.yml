@@ -37,6 +37,10 @@ jobs:
         if: matrix.peers == 'minimum'
         run: npm install --no-save markdown-it@13.0.0 vue@3.3.0
 
+      - name: Format
+        if: matrix.peers == 'locked'
+        run: npm run format:check
+
       - name: Lint
         if: matrix.peers == 'locked'
         run: npm run lint
