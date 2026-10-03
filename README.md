@@ -160,7 +160,7 @@ rule otherwise.
 
 ## Requirements
 
-Node 18 or newer. The plugin only reads files at render time — nothing is written, and the SFC is
+Node 20 or newer. The plugin only reads files at render time — nothing is written, and the SFC is
 never compiled, only parsed.
 
 ## Development

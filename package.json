@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-sfc-tabs-snippet",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Markdown-it plugin to display Vue Single File Component as tabs snippets in markdown",
   "keywords": [
     "markdown-it",
@@ -10,9 +10,18 @@
     "vitepress",
     "snippet"
   ],
+  "homepage": "https://github.com/Okamidev/markdown-it-sfc-tabs-snippet#readme",
+  "bugs": {
+    "url": "https://github.com/Okamidev/markdown-it-sfc-tabs-snippet/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Okamidev/markdown-it-sfc-tabs-snippet.git"
+  },
   "license": "MIT",
-  "author": "Okamidev",
+  "author": "Sylvain Bonnard (https://github.com/Okamidev)",
   "type": "module",
+  "sideEffects": false,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -23,16 +32,17 @@
   },
   "files": [
     "dist",
+    "src",
     "LICENSE",
     "README.md"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "dev": "tsc -p tsconfig.json --watch",
-    "clean": "rm -rf dist",
+    "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\"",
     "typecheck": "tsc -p tsconfig.test.json",
     "playground": "node playground/render.ts",
     "test": "vitest",
@@ -45,7 +55,7 @@
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^26.1.2",
+    "@types/node": "^20.19.43",
     "markdown-it": "^14.1.0",
     "typescript": "^5.9.3",
     "vitest": "^4.1.10",
