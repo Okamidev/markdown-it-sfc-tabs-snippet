@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-sfc-tabs-snippet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Markdown-it plugin to display Vue Single File Component as tabs snippets in markdown",
   "keywords": [
     "markdown-it",
