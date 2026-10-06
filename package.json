@@ -8,9 +8,11 @@
     "vue",
     "sfc",
     "vitepress",
-    "snippet"
+    "vitepress-plugin",
+    "snippet",
+    "documentation"
   ],
-  "homepage": "https://github.com/Okamidev/markdown-it-sfc-tabs-snippet#readme",
+  "homepage": "https://okamidev.github.io/markdown-it-sfc-tabs-snippet/",
   "bugs": {
     "url": "https://github.com/Okamidev/markdown-it-sfc-tabs-snippet/issues"
   },
@@ -36,6 +38,9 @@
     "LICENSE",
     "README.md"
   ],
+  "workspaces": [
+    "playground"
+  ],
   "engines": {
     "node": ">=20"
   },
@@ -49,6 +54,9 @@
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "playground": "node playground/render.ts",
+    "docs:dev": "npm run dev -w playground --",
+    "docs:build": "npm run build -w playground --",
+    "docs:preview": "npm run preview -w playground --",
     "test": "vitest",
     "test:run": "vitest run",
     "prepublishOnly": "npm run clean && npm run format:check && npm run lint &&npm run typecheck && npm run test:run && npm run build"

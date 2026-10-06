@@ -5,9 +5,12 @@
     "correctness": "error",
     "suspicious": "warn"
   },
+  "rules": {
+    "import/no-unassigned-import": ["warn", { "allow": ["**/*.css"] }]
+  },
   "env": {
     "node": true,
     "es2022": true
   },
-  "ignorePatterns": ["dist", "node_modules"]
+  "ignorePatterns": ["dist", "node_modules", "playground/.vitepress/cache"]
 }

@@ -22,17 +22,33 @@ cd markdown-it-sfc-tabs-snippet
 npm install
 ```
 
-| Command                | What it does                                              |
-| ---------------------- | --------------------------------------------------------- |
-| `npm test`             | Run the tests in watch mode (vitest)                      |
-| `npm run test:run`     | Run the tests once                                        |
-| `npm run typecheck`    | Type-check `src` and `test`                               |
-| `npm run lint`         | Lint with oxlint (warnings fail)                          |
-| `npm run lint:fix`     | Fix what oxlint can fix automatically                     |
-| `npm run format`       | Format the code with oxfmt                                |
-| `npm run format:check` | Check formatting without writing                          |
-| `npm run build`        | Emit `dist/` with type declarations                       |
-| `npm run playground`   | Render `playground/page.md` and print the tokens and HTML |
+| Command                | What it does                                                                         |
+| ---------------------- | ------------------------------------------------------------------------------------ |
+| `npm test`             | Run the tests in watch mode (vitest)                                                 |
+| `npm run test:run`     | Run the tests once                                                                   |
+| `npm run typecheck`    | Type-check `src` and `test`                                                          |
+| `npm run lint`         | Lint with oxlint (warnings fail)                                                     |
+| `npm run lint:fix`     | Fix what oxlint can fix automatically                                                |
+| `npm run format`       | Format the code with oxfmt                                                           |
+| `npm run format:check` | Check formatting without writing                                                     |
+| `npm run build`        | Emit `dist/` with type declarations                                                  |
+| `npm run playground`   | Render `playground/examples.md` with plain markdown-it and print the tokens and HTML |
+| `npm run docs:dev`     | Serve the VitePress playground site with hot reload                                  |
+| `npm run docs:build`   | Build the playground site to `playground/.vitepress/dist`                            |
+| `npm run docs:preview` | Serve the built playground site                                                      |
+
+The playground in `playground/` is an npm workspace holding a VitePress site that imports the
+plugin straight from `src/`, so changes show up without a build. Its components live in
+`playground/components`; adding an example there and a `<<<vue` line to `playground/examples.md`
+is a good way to check a change in a real VitePress setup. The site is deployed to GitHub Pages on
+every push to `main`.
+
+Arguments after `--` are passed on to VitePress. When the dev server runs in a container, it has
+to listen on every interface for the published port to reach it:
+
+```sh
+docker run --rm -it -p 5173:5173 -v "$PWD":/app -w /app node:22-bullseye npm run docs:dev -- --host
+```
 
 The code is formatted with 4-space indentation; run `npm run format` rather than formatting by
 hand.

@@ -1,0 +1,14 @@
+{
+  "name": "markdown-it-sfc-tabs-snippet-playground",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "render": "node render.ts"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}
