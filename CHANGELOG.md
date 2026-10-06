@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/Okamidev/markdown-it-sfc-tabs-snippet/compare/v0.1.0...v0.1.1) (2026-10-06)
+
+
+### Build System
+
+* set release-please to automate release process ([9f57ee1](https://github.com/Okamidev/markdown-it-sfc-tabs-snippet/commit/9f57ee10a59c455eb13f6398ee25db29118008af))
+
 ## 0.1.0 (2026-10-04)
 
 First public release.
