@@ -4,6 +4,8 @@
 [![CI](https://github.com/Okamidev/markdown-it-sfc-tabs-snippet/actions/workflows/ci.yml/badge.svg)](https://github.com/Okamidev/markdown-it-sfc-tabs-snippet/actions/workflows/ci.yml)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
+**[Live demo →](https://okamidev.github.io/markdown-it-sfc-tabs-snippet/)**
+
 A [markdown-it](https://github.com/markdown-it/markdown-it) plugin that imports a Vue Single File
 Component into your markdown as a group of code blocks — one per block the SFC declares. In
 [VitePress](https://vitepress.dev), those render as tabs.

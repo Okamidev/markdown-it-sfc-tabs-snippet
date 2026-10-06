@@ -5,7 +5,7 @@
   "singleQuote": true,
   "printWidth": 100,
   "sortPackageJson": false,
-  "ignorePatterns": ["dist", "package-lock.json", "**/*.md"],
+  "ignorePatterns": ["dist", "package-lock.json", "**/*.md", "playground/.vitepress/cache"],
   "overrides": [
     {
       "files": ["**/*.json", "**/*.yml", "**/*.yaml"],

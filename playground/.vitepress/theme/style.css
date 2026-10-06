@@ -1,0 +1,15 @@
+/* Frame around a live component, rendered right above the tabs showing its source. */
+.demo {
+    margin: 16px 0;
+    padding: 24px;
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 8px;
+    background-color: var(--vp-c-bg-soft);
+}
+
+.demo button {
+    padding: 4px 12px;
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 6px;
+    background-color: var(--vp-c-bg);
+}

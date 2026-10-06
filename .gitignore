@@ -1,5 +1,9 @@
 node_modules
 dist
+
+# vitepress
+playground/.vitepress/cache
+playground/.vitepress/dist
 *.tsbuildinfo
 .DS_Store
 
