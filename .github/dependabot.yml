@@ -16,6 +16,9 @@ updates:
       # Kept on the lowest supported Node, so newer Node APIs fail the typecheck.
       - dependency-name: '@types/node'
         update-types: ['version-update:semver-major']
+      # Vitest majors usually come with breaking config/API changes, so they're upgraded by hand.
+      - dependency-name: vitest
+        update-types: ['version-update:semver-major']
     commit-message:
       prefix: chore
       include: scope
