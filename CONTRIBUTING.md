@@ -94,4 +94,5 @@ title in the same format.
 ## Releases
 
 Releases are handled by the maintainer: merging the release pull request opened by release-please
-tags the version and publishes it to npm from GitHub Actions.
+tags the version, and GitHub Actions stages it on npm. The version goes live once the maintainer
+approves it with 2FA.
