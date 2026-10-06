@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+# Never cancel a run halfway: it could have tagged a release without publishing it.
+concurrency:
+  group: release-${{ github.workflow }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  release-please:
+    name: Release PR
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      # Opens or updates the release PR from the Conventional Commits on main, and tags the release
+      # once that PR is merged.
+      - id: release
+        uses: googleapis/release-please-action@v5
+
+  publish:
+    name: Publish to npm
+    needs: release-please
+    if: needs.release-please.outputs.release_created == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Trusted publishing: npm exchanges the workflow's OIDC token for a short-lived publish token,
+      # and attaches a provenance statement to the release.
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.release-please.outputs.tag_name }}
+
+      # Node 24 ships an npm recent enough for trusted and staged publishing (11.15.0+).
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - run: npm ci
+
+      # Stages the version rather than publishing it: it goes live once a maintainer approves it
+      # with 2FA, on npmjs.com or with `npm stage approve <stage-id>`. `prepublishOnly` runs the
+      # format, lint, typecheck and test checks, then builds `dist`.
+      - run: npm stage publish
